@@ -7,9 +7,9 @@ define([
      * A simple "Hello, World!" example of a Client Script. Uses the `pageInit`
      * event to write a message to the console log.
      *
-     * @NApiVersion 2.0
+     * @NApiVersion 2.x
      * @NModuleScope Public
-     * @NScriptType ScheduledScript
+     * @NScriptType ClientScript
      */
     var exports = {};
     function pageInit(context) {
@@ -380,10 +380,10 @@ define([
                 if(this.readyState === 4) {
                     xmlData = this.responseText;
                     var xmlObj = xmlMod.Parser.fromString(xmlData);
-                    var jsonObj = (xmlObj.documentElement);
+                    var jsonObj = xmlToJson(xmlObj.documentElement);
 
-                    var csv = jsonTocsvbyjson(jsonObj); // json to csv
-                    log.debug('jsonObj', csv);
+                    // var csv = jsonTocsvbyjson(jsonObj); // json to csv
+                    log.debug('jsonObj', jsonObj);
                     // alert(jsonObj);
                     
                     // rate scheduler
@@ -392,7 +392,7 @@ define([
 
                     // var csv = xmlTocsv(xmlData);
 
-                    CSVImport(csv);
+                    // CSVImport(csv);
                 }
             });
             

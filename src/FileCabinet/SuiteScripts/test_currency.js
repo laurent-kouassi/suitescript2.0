@@ -24,7 +24,7 @@
 
     var baseUrl = 'https://www.tcmb.gov.tr/kurlar/today.xml'; // base api url -> xml data
     var data = new FormData();
-
+    
     var xhr = new XMLHttpRequest();
     var xmlData;
 
@@ -35,19 +35,6 @@
 
                 xmlData = this.responseText;
                 var xmlObj = xml.Parser.fromString({text: xmlData});
-                // var jsonObj = xmlObj.documentElement;
-
-                // var csv = jsonTocsvbyjson(xmlObj); // json to csv
-                // log.debug('jsonObj', csv);
-
-                // var xmlDocument = xml.Parser.fromString({ text: xmlObj });
-                // x = xmlDocument.getElementsByTagName("User")[0];
-           
-              //   var newCurrency = record.create({ // Creating a new SO
-              //     type: "customrecord_test_exchange_rate",
-              //     isDynamic: true // Important: Dynamic Mode
-              //   });
-
 
               log.debug('test', 'read 2');
 
@@ -60,7 +47,7 @@
 
                 for (var i = 0; i < xmlNode.length; i++) {
                   log.debug('test', 'read 3');
-                  
+
                   var newCurrency = record.create({ // Creating a new SO
                     type: "customrecord_test_exchange_rate",
                     isDynamic: true // Important: Dynamic Mode
